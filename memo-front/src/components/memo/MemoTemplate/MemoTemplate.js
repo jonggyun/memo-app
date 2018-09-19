@@ -6,18 +6,19 @@ const cx = classNames.bind(styles);
 
 class MemoTemplate extends Component {
   render() {
+    const { header, folder, list, content } = this.props;
     return (
       <div className={cx('memo-header')}>
-        header
+        {header}
         <div className={cx('panes')}>
           <div className={cx('pane', 'memo-folder')}>
-            memo-folder
+            {folder}
           </div>
           <div className={cx('pane', 'memo-list')}>
-            memo-list
+            {list}
           </div>         
           <div className={cx('pane', 'memo-content')}>
-            memo-content
+            {content}
           </div>
         </div>
       </div>

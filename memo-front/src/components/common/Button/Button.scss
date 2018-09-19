@@ -1,0 +1,14 @@
+@import 'utils';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $oc-gray-3;
+  border-radius: 8px;
+  height: 30px;
+  width: 50px;
+  background: $oc-gray-1;
+  color: $oc-gray-5;
+  margin: 7px;
+}
