@@ -1,5 +1,5 @@
 const Router = require('koa-router');
-const memo = require('./memo');
+const memo = require('./memos');
 
 const api = new Router();
 
