@@ -5,8 +5,13 @@ const Memo = require('models/memo');
  * GET 
  * path: /
  */
-exports.folderList = (ctx) => {
-
+exports.folderList = async (ctx) => {
+  try {
+    const folders = await Memo.find().exec();
+    ctx.body = folders;
+  } catch(e) {
+    ctx.throw(e, 500);
+  }
 };
 
 /**
