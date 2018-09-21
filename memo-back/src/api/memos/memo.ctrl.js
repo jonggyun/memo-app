@@ -18,7 +18,7 @@ exports.checkObjectId = (ctx, next) => {
  */
 exports.fList = async (ctx) => {
   try {
-    const folders = await Folder.find().exec(); // find() 함수를 호출! exec()를 붙여야 서버에서 쿼리를 요청!
+    const folders = await Folder.find().sort({name: 1}).exec(); // find() 함수를 호출! exec()를 붙여야 서버에서 쿼리를 요청!
     ctx.body = folders;
   } catch (e) {
     ctx.throws(e, 500); // Internal Server Error
