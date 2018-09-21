@@ -1,5 +1,17 @@
 const Folder = require('models/folders');
+const Joi = require('joi');
+const { ObjectId } = require('mongoose').Types;
 
+exports.checkObjectId = (ctx, next) => {
+  const { fid } = ctx.params;
+
+  if(!ObjectId.isValid(fid)) {
+    ctx.statue = 400; // bad request
+    return null;
+  }
+
+  return next(); // next를 리턴해야 ctx.body가 제대로 설정된다?? 
+}
 /**
  * 폴더 리스트 가져오기
  * GET /api/memos/
@@ -18,6 +30,19 @@ exports.fList = async (ctx) => {
  * POST /api/memos/
  */
 exports.fCreate = async (ctx) => {
+  // 전달 받은 값에 대한 검증!
+  const schema = Joi.object().keys({
+    title: Joi.string().required(),
+  });
+
+  const result = Joi.validate(ctx.request.body, schema);
+
+  if (result.error) {
+    ctx.status = 400; // bad request
+    ctx.body = result.error;
+    return;
+  }
+
   const { name } = ctx.request.body;
 
   // 새 인스턴스? 스키마를 만들어서 던지자.
