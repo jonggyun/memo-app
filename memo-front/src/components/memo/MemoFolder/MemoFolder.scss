@@ -1,1 +1,13 @@
+@import 'utils';
 
+.folder-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.folder-footer {
+  position: absolute;
+  border: 1px solid black;
+}

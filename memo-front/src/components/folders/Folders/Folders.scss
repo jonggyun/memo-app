@@ -1,0 +1,16 @@
+@import 'utils';
+
+
+.folder {
+  height: 2.5rem;
+  //border: 1px solid black;
+  display: flex;
+  align-items: center;
+  padding-left: 1.5rem;
+  font-weight: 800;
+   
+  &:hover {
+    background: $oc-gray-5;
+  }
+}
+

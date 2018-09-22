@@ -27,6 +27,7 @@
 
 > Structure
 
+### Front-End
 ```
 |- Root.js
 
@@ -40,9 +41,24 @@
 
 |- - - - - MemoFoler.js - 좌측 폴더 리스트
 
+|- - - - - - Folder.js - 폴더 컴포넌트
+
 |- - - - - MemoList.js - 폴더 내부의 리스트
 
 |- - - - - MemoContent.js - 메모의 내용
 
 |- - - - - MemoFooter.js - 메모의 풋터
+
+```
+### Back-End
+```
+├── api
+│   ├── index.js         - memos 라우터 설정
+│   └── memos
+│       ├── index.js     
+│       └── memo.ctrl.js - 비동기 방식을 이용한 DB접근 및 데이터 추출
+├── index.js             - mongoDB와 접속하는 역할 및 api 라우터 설정
+└── models               - schema 설정
+    ├── folders.js       
+    └── memos.js
 ```
