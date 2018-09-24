@@ -4,7 +4,7 @@ import { createAction, handleActions } from 'redux-actions';
 import * as api from 'lib/api';
 
 // action type
-const GET_FOLDER_LIST = 'fList/GET_FOLDER_LIST';
+const GET_FOLDER_LIST = 'GET_FOLDER_LIST';
 
 // action create function
 // action type, payload

@@ -4,8 +4,10 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Button = ({children}) => (
-  <div className={cx('button')}>
+const Button = ({children, onClick}) => (
+  <div className={cx('button')}
+    onClick={onClick}
+  >
     {children}
   </div>
 );
