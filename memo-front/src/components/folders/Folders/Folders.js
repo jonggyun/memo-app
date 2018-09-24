@@ -16,26 +16,27 @@ const FolderItem = ({name}) => {
 };
 
 // db에 저장된 폴더들을 가져와서 뿌리는 역할을 해야한다.
-const Folders = ({folders}) => {
-  const folderList = folders.map(
-    (folder) => {
-      const { _id, name } =folder.toJS();
+const Folders = (folders) => {
+  console.log('folders11', folders);
+  // const folderList = folders.map(
+  //   (folder) => {
+  //     const { _id, name } =folder.toJS();
 
-      return (
-        <FolderItem 
-          id={_id}
-          key={_id}
-          name={name}
-        />
-      )
-    }
-  );
+  //     return (
+  //       <FolderItem 
+  //         id={_id}
+  //         key={_id}
+  //         name={name}
+  //       />
+  //     )
+  //   }
+  // );
 
-  return (
-    <div>
-      {folderList}
-    </div>
-  )
+  // return (
+  //   <div>
+  //     {folderList}
+  //   </div>
+  // )
 };
 
 export default Folders;
