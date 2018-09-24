@@ -1,1 +1,1 @@
-export { default as folderList } from './folderList';
+export { default as folders } from './folderList';

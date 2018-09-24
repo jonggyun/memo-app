@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Folders from 'components/folders/Folders';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as folderListAction from 'store/modules/folderList';
@@ -15,7 +14,8 @@ class FoldersContainer extends Component {
 
   render() {
     // 여기서 폴더 리스트를 받아와야함!!!
-    console.log('thisprops.', this.props);
+    const folders = this.props.folders;
+    console.log('thisprops.', folders);
     return (
       <div>
         
@@ -24,13 +24,19 @@ class FoldersContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  folders : state.folders
-})
+const mapStateToProps = (state) => {
+  console.log('mapStateToProps1', state);
+  return ({
+    folders : state.folders
+  })
+};
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => {
+  console.log('mapDispatchToProps');
+  return ({
   getFolderList: bindActionCreators(folderListAction.getFList, dispatch)
 })
+};
 
 export default connect(
   mapStateToProps,
