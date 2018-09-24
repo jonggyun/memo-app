@@ -29,27 +29,35 @@
 
 ### Front-End
 ```
-|- Root.js
-
-|- - App.js 
-
-|- - - MemoPage.js - 라우팅을 위한 페이지
-
-|- - - - MemoTemplate.js - 메모 페이지의 큰 틀을 정해주는 페이지
-
-|- - - - - MemoHeader.js - 메모의 헤더
-
-|- - - - - MemoFoler.js - 좌측 폴더 리스트
-
-|- - - - - - Folder.js - 폴더 컴포넌트
-
-|- - - - - MemoList.js - 폴더 내부의 리스트
-
-|- - - - - MemoContent.js - 메모의 내용
-
-|- - - - - MemoFooter.js - 메모의 풋터
+├── Root.js
+├── components                          - 프레젠테이셔널 컴포넌트
+│   ├── App.js                          - 컴포넌트의 전체 라우트 관리
+│   ├── common                          - 공통 컴포넌트(ex. button, header ..)
+│   ├── folders
+│   │   └── Folders                     - 화면 좌측 폴더 컴포넌트
+│   └── memo
+│       ├── MemoContent                 - 메모페이지 내용 컴포넌트
+│       ├── MemoFolder                  - 메모페이지 폴더 컴포넌트
+│       ├── MemoHeader                  - 메모페이지 헤더 컴포넌트
+│       ├── MemoList                    - 메모페이지 메모리스트 컴포넌트
+│       └── MemoTemplate                - 메모페이지 (템플릿)프레임 컴포넌트
+├── containers                          - 컨테이너 컴포넌트
+├── index.css
+├── index.js
+├── lib
+│   └── api.js                          - axios 비동기 연결
+├── pages
+│   ├── MemoPage.js
+│   └── index.js
+├── store
+│   ├── configure.js
+│   └── modules                         - Ducks 구조의 Redux
+│       └── index.js
+└── styles                              - 공통 CSS
 
 ```
+
+
 ### Back-End
 ```
 ├── api
