@@ -5,11 +5,11 @@ import Button from 'components/common/Button';
 
 const cx = classNames.bind(styles);
 
-const MemoHeader = () => (
+const MemoHeader = ({onCreate, onSave ,onRemove}) => (
   <div className={cx('memo-header')}>
-    <Button>New</Button>
-    <Button>Del</Button>
-
+    <Button onCustomEvent={onCreate}>New</Button>
+    <Button onCustomEvent={onSave}>Save</Button>
+    <Button onCustomEvent={onRemove}>Del</Button>
     <input 
       type="text"
       placeholder="검색"

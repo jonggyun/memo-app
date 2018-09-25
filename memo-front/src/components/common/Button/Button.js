@@ -4,9 +4,9 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Button = ({children, onClick}) => (
+const Button = ({children, onCustomEvent}) => (
   <div className={cx('button')}
-    onClick={onClick}
+    onClick={onCustomEvent}
   >
     {children}
   </div>

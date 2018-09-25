@@ -16,8 +16,6 @@ class FoldersContainer extends Component {
   render() {
     // 여기서 폴더 리스트를 받아와야함!!!
     const folders = this.props.folders;
-    console.log(folders.length);
-    console.log(folders);
     if(folders.length === 0) return null;
     return (
       <div>
@@ -28,14 +26,12 @@ class FoldersContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapStateToProps1', state);
   return ({
     folders : state.folderList // 컴포넌트의 props를 정의
   })
 };
 
 const mapDispatchToProps = (dispatch) => {
-  console.log('mapDispatchToProps');
   return ({
   getFolderList: bindActionCreators(folderListAction.getFList, dispatch) // 컴포넌트의 props를 정의
 })
