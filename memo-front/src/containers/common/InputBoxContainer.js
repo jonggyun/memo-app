@@ -7,14 +7,12 @@ import * as createFolder from 'store/modules/createFolder';
 
 class InputBoxContainer extends Component {
   onChangeName = ({folderName}) => {
-    console.log('setFolderName', folderName);
     this.props.setFolderName(folderName);
   }
 
   render() {
     const { folderName } = this.props;
     const { onChangeName } = this;
-    console.log('imhere', folderName);
     return (
       <div>
         <InputBox 

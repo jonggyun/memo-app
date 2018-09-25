@@ -1,5 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 
+import * as folderList from 'store/modules/folderList';
+
 import * as api from 'lib/api';
 
 // action type
@@ -11,22 +13,18 @@ export const createFolder = createAction(CREAT_FOLDER);
 export const changeFolderInput = createAction(CHANGE_FOLDER_INPUT);
 
 // 앞에서 입력한 folder라는 객체를 받아와서 api로 back에 넘기기.
-export const cFolder = (folder) => {
-  return (dispatch) => {
-    api.createFolder(folder)
+export const cFolder = ({folderName}) => {
+  api.createFolder({folderName})
     .then((response) => {
-      console.log(response);
-      //성공하면 dispatch 날려서 액션 값을 바꾸기
-    });
-  }
+      console.log('successsss');
+    })
+    .catch((error) => {console.log('errorrrr') });
 }
 
 // 폴더 이름이 바뀌는 것을 dispatch하는 부분.
 export const distpatchFolderName = (folderName) => {
   return (dispatch) => {
-    console.log('dispatchhh', folderName);
     dispatch(changeFolderInput(folderName));
-    
   }
 }
 
@@ -44,7 +42,6 @@ export default handleActions({
   },
   
   [CHANGE_FOLDER_INPUT]: (state, action) => {
-    console.log("payloadddd", action.payload);
     return {
       folderName: action.payload
     }

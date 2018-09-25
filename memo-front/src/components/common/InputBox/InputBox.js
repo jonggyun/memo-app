@@ -17,7 +17,6 @@ class InputBox extends Component {
   render() {
     const { handleChange } = this;
     const { folderName } = this.props;
-    console.log('inputboxjs', folderName);
     return (
       <input 
         className={cx('input-box')}

@@ -18,11 +18,9 @@ exports.checkObjectId = (ctx, next) => {
  */
 exports.fList = async (ctx) => {
   try {
-    console.log("backend fList");
     // find() 함수를 호출! exec()를 붙여야 서버에서 쿼리를 요청!
     // sort() 함수를 통한 정렬
     const folders = await Folder.find().sort({name: 1}).exec(); 
-    console.log(folders);
     ctx.body = folders;
   } catch (e) {
     ctx.throws(e, 500); // Internal Server Error
@@ -36,7 +34,7 @@ exports.fList = async (ctx) => {
 exports.fCreate = async (ctx) => {
   // 전달 받은 값에 대한 검증!
   const schema = Joi.object().keys({
-    title: Joi.string().required(),
+    folderName: Joi.string().required(),
   });
 
   const result = Joi.validate(ctx.request.body, schema);
@@ -47,20 +45,20 @@ exports.fCreate = async (ctx) => {
     return;
   }
 
-  const { name } = ctx.request.body;
+  const { folderName } = ctx.request.body;
 
   // 새 인스턴스? 스키마를 만들어서 던지자.
   const folder = new Folder({
-    name
+    name: folderName
   });
 
   try {
     await folder.save();
+    ctx.body = folder;
   } catch(e) {
     // db에 오류난 경우 처리
     ctx.throws(e, 500);
   }
-
 };
 
 /**
