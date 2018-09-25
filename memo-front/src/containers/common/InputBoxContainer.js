@@ -27,9 +27,9 @@ class InputBoxContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('여기 state', state.createFolder);
+  const { folderName } = state.createFolder;
   return {
-    folderName: state.createFolder
+    folderName: folderName
   }
 };
 

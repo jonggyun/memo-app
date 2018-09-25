@@ -23,7 +23,7 @@ class InputBox extends Component {
         className={cx('input-box')}
         type="text" 
         name="title"
-        // value='11111'
+        value={folderName}
         onChange={handleChange}
       />
     );

@@ -24,6 +24,7 @@ export const cFolder = (folder) => {
 // 폴더 이름이 바뀌는 것을 dispatch하는 부분.
 export const distpatchFolderName = (folderName) => {
   return (dispatch) => {
+    console.log('dispatchhh', folderName);
     dispatch(changeFolderInput(folderName));
     
   }
@@ -43,8 +44,9 @@ export default handleActions({
   },
   
   [CHANGE_FOLDER_INPUT]: (state, action) => {
+    console.log("payloadddd", action.payload);
     return {
-      folerName: action.payload
+      folderName: action.payload
     }
   }
 }, initialState);
