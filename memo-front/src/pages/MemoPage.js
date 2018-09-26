@@ -1,14 +1,14 @@
 import React from 'react';
 import MemoTemplate from 'components/memo/MemoTemplate';
-import MemoFolder from 'components/memo/MemoFolder';
+import FolderList from 'components/folders/FolderList';
 import MemoList from 'components/memo/MemoList';
 
 const MemoPage = () => {
   return (
     <div>
       <MemoTemplate 
-        folder = {<MemoFolder />}
-        list = {<MemoList />}
+        folderList = {<FolderList />}
+        memoList = {<MemoList />}
       />
     </div>
   )

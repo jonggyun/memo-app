@@ -1,7 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
 
-import * as folderList from 'store/modules/folderList';
-
 import * as api from 'lib/api';
 
 // action type
@@ -16,10 +14,9 @@ export const changeFolderInput = createAction(CHANGE_FOLDER_INPUT);
 export const cFolder = ({folderName}) => {
   api.createFolder({folderName})
     .then((response) => {
-      console.log('successsss');
       // component를 refresh 해야함      
     })
-    .catch((error) => {console.log('errorrrr') });
+    .catch((error) => {console.log('error') });
 }
 
 // 폴더 이름이 바뀌는 것을 dispatch하는 부분.

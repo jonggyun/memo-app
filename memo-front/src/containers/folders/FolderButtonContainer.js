@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import MemoHeader from 'components/memo/MemoHeader';
+import FolderButton from 'components/folders/FolderButton';
 import { connect } from 'react-redux';
 import * as createFolder from 'store/modules/createFolder';
 
-class MemoHeaderContainer extends Component {
+class FolderButtonContainer extends Component {
 
   createContent = () => {
     
@@ -28,7 +28,7 @@ class MemoHeaderContainer extends Component {
     const { createContent, saveContent ,removeContent } = this;
     return (
       <div>
-        <MemoHeader 
+        <FolderButton 
           onCreate={createContent}
           onSave={saveContent}
           onRemove={removeContent}
@@ -54,4 +54,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MemoHeaderContainer);
+)(FolderButtonContainer);

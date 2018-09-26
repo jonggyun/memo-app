@@ -1,0 +1,8 @@
+@import 'utils';
+
+.folder-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;     // 버튼 우측정렬
+  height: 2rem;
+}
