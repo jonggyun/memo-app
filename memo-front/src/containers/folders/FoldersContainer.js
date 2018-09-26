@@ -33,8 +33,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return ({
-  getFolderList: bindActionCreators(folderListAction.getFList, dispatch) // 컴포넌트의 props를 정의
-})
+    getFolderList: bindActionCreators(folderListAction.getFList, dispatch) // 컴포넌트의 props를 정의
+  })
 };
 
 export default connect(

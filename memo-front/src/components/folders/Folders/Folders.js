@@ -10,8 +10,8 @@ const cx = classNames.bind(styles);
 const FolderItem = ({name}) => {
   return (
     <div className={cx('folder')}>
-    {name}
-  </div>
+      {name}
+    </div>
   )
 };
 

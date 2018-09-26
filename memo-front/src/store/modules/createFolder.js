@@ -17,6 +17,7 @@ export const cFolder = ({folderName}) => {
   api.createFolder({folderName})
     .then((response) => {
       console.log('successsss');
+      // component를 refresh 해야함      
     })
     .catch((error) => {console.log('errorrrr') });
 }
@@ -33,9 +34,6 @@ const initialState = {
 };
 
 // reducer
-// insert에 대한 reducer는 어떻게 만들어야할까?
-// 관련 type에 값만 바꾸기?? 값이 바뀌면 insert가 일어난 것이라고 판단하게 만들기?
-// 여기서 action은 직접 바꾸면 안되는건가?? 새로운 객체로 return을 해야하는건가?
 export default handleActions({ 
   [CREAT_FOLDER]: (state, action) => { // 우리 actionType에는 접두사가 없기에 []를 사용하지 않아도 된다.
     return initialState;

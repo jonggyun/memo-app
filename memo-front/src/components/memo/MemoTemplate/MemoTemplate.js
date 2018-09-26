@@ -6,10 +6,9 @@ const cx = classNames.bind(styles);
 
 class MemoTemplate extends Component {
   render() {
-    const { header, folder, list, content } = this.props;
+    const { folder, list } = this.props;
     return (
       <div className={cx('memo-header')}>
-        {header}
         <div className={cx('panes')}>
           <div className={cx('pane', 'memo-folder')}>
             {folder}
@@ -17,9 +16,6 @@ class MemoTemplate extends Component {
           <div className={cx('pane', 'memo-list')}>
             {list}
           </div>         
-          <div className={cx('pane', 'memo-content')}>
-            {content}
-          </div>
         </div>
       </div>
     );

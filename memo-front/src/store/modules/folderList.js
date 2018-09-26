@@ -14,12 +14,14 @@ export const getFolderList = createAction(GET_FOLDER_LIST);
 // }
 
 export const getFList = () => {
+  console.log('getFList');
   return (dispatch) => {
-      api.getFolderList().then((response) => {
-        return response.data;
-      }).then((folders) => {
-        dispatch(getFolderList(folders));
-      })
+    console.log('getFList disaptch');
+    api.getFolderList().then((response) => {
+      return response.data;
+    }).then((folders) => {
+      dispatch(getFolderList(folders));
+    })
   }
 }
 

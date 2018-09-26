@@ -2,7 +2,7 @@
 
 .memo-header {
   .panes {
-    height: calc(100vh - 4rem); // 페이지 높이에서 header 빼는 부분
+    height: calc(100vh - 2rem); // 페이지 높이에서 header 빼는 부분
     display: flex;
     border: 1px solid $oc-gray-2;
     .pane {
@@ -10,17 +10,13 @@
     }
     .memo-folder {
       background: $oc-gray-0;
-      width: 15%;
+      width: 25%;
       min-width: 200px;
     }
     .memo-list {
       background: $oc-gray-0;
-      width: 35%;
+      width: 75%;
       min-width: 200px;
-    }
-    .memo-content {
-      background: $oc-gray-0;
-      width: 60%;
     }
     // .separator {
     //   width: 1rem;

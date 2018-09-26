@@ -1,13 +1,26 @@
 @import 'utils';
 
-.folder-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
-}
+.memo-folder {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  .folder-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-left: 2rem;
+    padding-top: 3rem;
+    height: 4.5rem;
+  }
 
-.folder-footer {
-  position: absolute;
-  border: 1px solid black;
+  .folder-control {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;     // 버튼 우측정렬
+    height: 2rem;
+  }
+
+  .folder-footer {
+    position: absolute;
+    border: 1px solid black;
+  }
 }

@@ -2,7 +2,7 @@
 
 
 .folder {
-  height: 2.5rem;
+  height: 4rem;
   //border: 1px solid black;
   display: flex;
   align-items: center;
@@ -10,7 +10,7 @@
   font-weight: 800;
    
   &:hover {
-    background: $oc-gray-5;
+    box-shadow: inset 10px 0 2px 0 $oc-lime-8;
   }
 }
 
