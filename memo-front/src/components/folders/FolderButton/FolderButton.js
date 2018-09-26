@@ -6,11 +6,11 @@ import Button from 'components/common/Button';
 
 const cx = classNames.bind(styles);
 
-const FolderButton = () => (
+const FolderButton = ({onCreate, onRemove, onUpdate}) => (
   <div className={cx('folder-button')}>
-        <Button>A</Button>
-        <Button>D</Button>
-        <Button>U</Button>
+        <Button onCustomEvent={onCreate}>A</Button>
+        <Button onCustomEvent={onRemove}>D</Button>
+        <Button onCustomEvent={onUpdate}>U</Button>
   </div>
 );
 

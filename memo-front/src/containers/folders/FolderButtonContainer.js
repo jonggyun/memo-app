@@ -5,33 +5,34 @@ import * as createFolder from 'store/modules/createFolder';
 
 class FolderButtonContainer extends Component {
 
-  createContent = () => {
-    
-  }
-
-  saveContent = () => {
+  onCreate = () => {
     // 나중에 여기서 type check를 한다음에 폴더, 메모 추가 등등 분기를 태워야한다.
-    const { folderName } = this.props;
+    // const { folderName } = this.props;
 
-    const param = {
-      folderName : folderName
-    }
-    createFolder.cFolder(param);
+    // const param = {
+    //   folderName : folderName
+    // }
+    // createFolder.cFolder(param);
+    alert('createFolder');
   }
 
-  removeContent = () => {
+  onRemove = () => {
     alert('removeFolder');
+  }
+
+  onUpdate = () => {
+    alert('updateFolder');
   }
 
   render() {
 
-    const { createContent, saveContent ,removeContent } = this;
+    const { onCreate, onRemove, onUpdate } = this;
     return (
       <div>
         <FolderButton 
-          onCreate={createContent}
-          onSave={saveContent}
-          onRemove={removeContent}
+          onCreate={onCreate}
+          onRemove={onRemove}
+          onUpdate={onUpdate}
         />
       </div>
     );
