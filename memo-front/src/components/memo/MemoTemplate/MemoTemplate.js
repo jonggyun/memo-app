@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import styles from './MemoTemplate.scss';
 import classNames from 'classnames/bind';
 
-import CreateFolderModal from 'components/modal/CreateFolderModal';
+//import CreateFolderModal from 'components/modal/CreateFolderModal';
+import CreateFolderModalContainer from 'containers/modal/CreateFolderModalContainer';
 
 const cx = classNames.bind(styles);
 
@@ -19,7 +20,7 @@ class MemoTemplate extends Component {
             {memoList}
           </div>         
         </div>
-        <CreateFolderModal visible='true'/>
+        <CreateFolderModalContainer />
       </div>
     );
   }

@@ -31,7 +31,6 @@ class ModalWrapper extends Component {
     render() {
         const { children, visible } = this.props;
         const { animate } = this.state;
-
         // visible과 animate 값이 둘다 false일 때만 null 리턴
         if(!visible && !animate) return null;
 

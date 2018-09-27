@@ -2,3 +2,4 @@
  // 관련 내용을 default as 에 정의한 이름으로 사용해야한다.
 export { default as folderList } from './folderList';
 export { default as createFolder } from './createFolder'; 
+export { default as common } from './common';

@@ -45,7 +45,7 @@
     }
 
     .create-folder {
-        background: $oc-blue-6;
+        background: $oc-lime-6;
         text-align: center;
         color: white;
         font-weight: 500;
@@ -55,10 +55,10 @@
         margin-top: 1rem;
         font-size: 1.25rem;
         &:hover {
-            background: $oc-blue-5;
+            background: $oc-lime-5;
         }
-        &:active {
-            background: $oc-blue-6;
+        &:active { // 버튼을 눌렀을 때.
+            background: $oc-lime-6;
         }
     }
 }
