@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import FolderButton from 'components/folders/FolderButton';
 import { connect } from 'react-redux';
 import * as createFolder from 'store/modules/createFolder';
+import { bindActionCreators } from 'redux';
+import * as commonActions from 'store/modules/common';
 
 class FolderButtonContainer extends Component {
 
@@ -13,7 +15,8 @@ class FolderButtonContainer extends Component {
     //   folderName : folderName
     // }
     // createFolder.cFolder(param);
-    alert('createFolder');
+    const { CommonAction, visible } = this.props;
+    CommonAction.createFolderModal(true);
   }
 
   onRemove = () => {
@@ -41,13 +44,14 @@ class FolderButtonContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    folderName: state.createFolder.folderName
+    folderName: state.createFolder.folderName,
+    visible: state.common.getIn(['folderModal','visible'])
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    CommonAction: bindActionCreators(commonActions, dispatch)
   }
 }
 
