@@ -14,9 +14,7 @@ export const getFolderList = createAction(GET_FOLDER_LIST);
 // }
 
 export const getFList = () => {
-  console.log('getFList');
   return (dispatch) => {
-    console.log('getFList disaptch');
     api.getFolderList().then((response) => {
       return response.data;
     }).then((folders) => {

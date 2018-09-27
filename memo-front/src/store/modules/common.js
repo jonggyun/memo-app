@@ -9,7 +9,7 @@ export const createFolderModal = createAction(CREATE_FOLDER_MODAL);
 
 const initialSate = Map({
   folderModal: Map({
-    visible: true
+    visible: false
   }),
 });
 

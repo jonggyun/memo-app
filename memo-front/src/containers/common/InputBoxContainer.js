@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setFolderName: bindActionCreators(createFolder.distpatchFolderName, dispatch)
+    setFolderName: bindActionCreators(createFolder.dispatchFolderName, dispatch)
   }
 };
 

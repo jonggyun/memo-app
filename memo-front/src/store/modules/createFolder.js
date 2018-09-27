@@ -12,15 +12,17 @@ export const changeFolderInput = createAction(CHANGE_FOLDER_INPUT);
 
 // 앞에서 입력한 folder라는 객체를 받아와서 api로 back에 넘기기.
 export const cFolder = ({folderName}) => {
-  api.createFolder({folderName})
-    .then((response) => {
-      // component를 refresh 해야함      
-    })
-    .catch((error) => {console.log('error') });
+  console.log('in the cFolder', folderName);
+  // api.createFolder({folderName})
+  //   .then((response) => {
+  //     // component를 refresh 해야함    
+  //     console.log("response", response);  
+  //   })
+  //   .catch((error) => {console.log('error') });
 }
 
 // 폴더 이름이 바뀌는 것을 dispatch하는 부분.
-export const distpatchFolderName = (folderName) => {
+export const dispatchFolderName = (folderName) => {
   return (dispatch) => {
     dispatch(changeFolderInput(folderName));
   }
