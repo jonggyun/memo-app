@@ -23,15 +23,21 @@ export const getFList = () => {
   }
 }
 
-const initialState = [];
+const initialState = {
+  folderList: null
+};
 
 // reducer 
 // 상태값, 액션
 export default handleActions({
   [GET_FOLDER_LIST]: (state, action) => {
-    return [
-      ...state,
-      ...action.payload
-    ]
+    console.log('getFolderList', action.payload);
+    // return [
+    //   ...state,
+    //   ...action.payload
+    // ]
+    return {
+      folders: action.payload
+    }
   }
 },initialState);

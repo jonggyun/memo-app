@@ -16,7 +16,6 @@ class FoldersContainer extends Component {
       id: id,
       folderName: folderName
     }
-    console.log('handleSelect', id, folderName);
     CommonAction.folderInfo(param);
   }
 
@@ -24,11 +23,19 @@ class FoldersContainer extends Component {
     this.props.getFolderList();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { complete } = this.props;
+    if(prevProps.complete !== complete && complete) {
+      this.props.getFolderList();
+    }
+  }
+
   render() {
     // 여기서 폴더 리스트를 받아와야함!!!
     const folders = this.props.folders;
     const { handleSelect } = this;
-    if(folders.length === 0) return null;
+    console.log('rendered folders', folders);
+    if(folders === undefined) return null;
     return (
       <div>
         <Folders 
@@ -42,7 +49,8 @@ class FoldersContainer extends Component {
 
 const mapStateToProps = (state) => {
   return ({
-    folders : state.folderList // 컴포넌트의 props를 정의
+    folders : state.folderList.folders, // 컴포넌트의 props를 정의
+    complete: state.common.getIn(['folderModal', 'complete'])
   })
 };
 

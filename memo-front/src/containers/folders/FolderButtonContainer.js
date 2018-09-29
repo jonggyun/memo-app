@@ -10,16 +10,20 @@ class FolderButtonContainer extends Component {
     const { CommonAction } = this.props;
     const param = {
       visible: true,
-      type: 'create'
+      type: 'create',
+      complete: false,
     }
     CommonAction.folderModal(param);
   }
 
   onRemove = () => {
-    const { CommonAction } = this.props;
+    const { CommonAction, id } = this.props;
+
+    if(!id && id === '') return alert('폴더를 선택해주세요');
     const param = {
       visible: true,
-      type: 'remove'
+      type: 'remove',
+      complete: false,
     }
     CommonAction.folderModal(param);    
   }

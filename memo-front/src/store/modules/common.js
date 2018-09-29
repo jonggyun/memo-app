@@ -13,6 +13,7 @@ const initialSate = Map({
   folderModal: Map({
     visible: false,
     type: '',
+    complete: false,
   }),
   folderInfo: Map({
     id: '',
@@ -23,9 +24,10 @@ const initialSate = Map({
 // reducer
 export default handleActions({
   FOLDER_MODAL: (state, action) => {
-    const { visible, type } = action.payload;
+    const { visible, type, complete } = action.payload;
     return state.setIn(['folderModal', 'visible'], visible)
                 .setIn(['folderModal', 'type'], type)
+                .setIn(['folderModal', 'complete'], complete)
   },
   FOLDER_INFO: (state, action) => {
     const { id, folderName } = action.payload;

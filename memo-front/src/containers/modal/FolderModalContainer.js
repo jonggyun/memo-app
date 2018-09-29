@@ -23,23 +23,24 @@ class FolderModalContainer extends Component {
   }
 
   removeFolder = async () => {
-    const { id, FolderAction, CommonAction, history, type } = this.props;
+    const { id, FolderAction, CommonAction, type } = this.props;
     try {
       await FolderAction.deleteFolder({id});
 
       const param = {
         visible: false,
-        type: type
+        type: type,
+        complete: true,
       }      
       CommonAction.folderModal(param);
-      history.push('/'); // 이거 왜 안되는거지?? router를 나눠야하나? 나중에 확인해보기
+
     } catch (e) {
       console.log(e)
     }
   }
 
   createFolder = async () => {
-    const { folderName, FolderAction, CommonAction, history, type } = this.props;
+    const { folderName, FolderAction, CommonAction, type } = this.props;
     const folder = {
       folderName: folderName
     }
@@ -48,10 +49,10 @@ class FolderModalContainer extends Component {
       
       const param = {
         visible: false,
-        type: type
+        type: type,
+        complete: true,
       }
       CommonAction.folderModal(param);
-      history.push('/'); // 이거 왜 안되는거지?? router를 나눠야하나? 나중에 확인해보기
     } catch (e) {
       console.log(e);
     }
