@@ -37,6 +37,8 @@ exports.fCreate = async (ctx) => {
     folderName: Joi.string().required(),
   });
 
+  console.log('ctx.request.body', ctx.request.body);
+
   const result = Joi.validate(ctx.request.body, schema);
 
   if (result.error) {

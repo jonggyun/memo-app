@@ -5,7 +5,6 @@ import classNames from 'classnames/bind';
 //import Folders from 'components/folders/Folders';
 import FoldersContainer from 'containers/folders/FoldersContainer';
 import FolderButtonContainer from 'containers/folders/FolderButtonContainer';
-import InputBoxContainer from 'containers/common/InputBoxContainer';
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +16,6 @@ const FolderList = () => (
     <FolderButtonContainer /> 
     <div className={cx('folder-list')}>
       <FoldersContainer />
-      {/* <InputBoxContainer /> */}
     </div>
   </div>
 );

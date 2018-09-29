@@ -8,8 +8,12 @@ import * as folderActions from 'store/modules/folder';
 class FolderModalContainer extends Component {
 
   handleCancel = () => {
-    const { CommonAction } = this.props;
-    CommonAction.folderModal(false);
+    const { CommonAction, type } = this.props;
+    const param = {
+      visible: false,
+      type: type
+    }
+    CommonAction.folderModal(param);
   }
 
   handleChange = (e) => {
@@ -18,15 +22,35 @@ class FolderModalContainer extends Component {
     CreateFolderAction.dispatchFolderName(value);
   }
 
+  removeFolder = async () => {
+    const { id, FolderAction, CommonAction, history, type } = this.props;
+    try {
+      await FolderAction.deleteFolder({id});
+
+      const param = {
+        visible: false,
+        type: type
+      }      
+      CommonAction.folderModal(param);
+      history.push('/'); // 이거 왜 안되는거지?? router를 나눠야하나? 나중에 확인해보기
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   createFolder = async () => {
-    const { folderName, CreateFolderAction, CommonAction, history } = this.props;
-    
+    const { folderName, FolderAction, CommonAction, history, type } = this.props;
     const folder = {
       folderName: folderName
     }
     try {
-      await CreateFolderAction.createFolder(folder);
-      CommonAction.folderModal(false);
+      await FolderAction.createFolder(folder);
+      
+      const param = {
+        visible: false,
+        type: type
+      }
+      CommonAction.folderModal(param);
       history.push('/'); // 이거 왜 안되는거지?? router를 나눠야하나? 나중에 확인해보기
     } catch (e) {
       console.log(e);
@@ -34,15 +58,17 @@ class FolderModalContainer extends Component {
   }
 
   render() {
-    const { visible, folderName } = this.props;
-    const { handleCancel, handleChange, createFolder } = this;
+    const { visible, type, folderName } = this.props;
+    const { handleCancel, handleChange, createFolder, removeFolder } = this;
     return (
       <FolderModal 
         visible={visible}
+        type={type}
         onCancel={handleCancel}
         folderName={folderName}
         onChange={handleChange}
         onCreateFolder={createFolder}
+        onRemoveFolder={removeFolder}
       />
     );
   }
@@ -50,16 +76,17 @@ class FolderModalContainer extends Component {
 
 const mapStateToProps = (state) => {
   // immutable JS에 대한 내용 익히기!
-  const visible = state.common.getIn(['folderModal','visible']);
   return {
-    visible: visible,
-    folderName: state.folder.folderName
+    visible: state.common.getIn(['folderModal','visible']),
+    type: state.common.getIn(['folderModal','type']),
+    folderName: state.folder.get('folderName'), 
+    id: state.folder.get('id')
   }
 };
 
 const mapDispatchToProps = (dispatch) => ({
   CommonAction: bindActionCreators(commonActions, dispatch),
-  CreateFolderAction: bindActionCreators(folderActions, dispatch)
+  FolderAction: bindActionCreators(folderActions, dispatch)
 });
 
 export default connect(

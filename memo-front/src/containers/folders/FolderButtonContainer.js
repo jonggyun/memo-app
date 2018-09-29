@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import FolderButton from 'components/folders/FolderButton';
 import { connect } from 'react-redux';
-import * as folder from 'store/modules/folder';
 import { bindActionCreators } from 'redux';
 import * as commonActions from 'store/modules/common';
 
 class FolderButtonContainer extends Component {
 
   onCreate = () => {
-    const { CommonAction, visible } = this.props;
-    CommonAction.folderModal(true);
+    const { CommonAction } = this.props;
+    const param = {
+      visible: true,
+      type: 'create'
+    }
+    CommonAction.folderModal(param);
   }
 
   onRemove = () => {
-    const { CommonAction, visible } = this.props;
-    CommonAction.folderModal(true);    
+    const { CommonAction } = this.props;
+    const param = {
+      visible: true,
+      type: 'remove'
+    }
+    CommonAction.folderModal(param);    
   }
 
   onUpdate = () => {
@@ -38,7 +45,8 @@ class FolderButtonContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    folderName: state.folder.folderName,
+    folderName: state.folder.get('folderName'),
+    id: state.folder.get('id'),
     visible: state.common.getIn(['folderModal','visible'])
   }
 };

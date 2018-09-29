@@ -7,16 +7,19 @@ const cx = classNames.bind(styles);
 /**
  * 폴더 하나 하나를 가르키는 컴포넌트
  */
-const FolderItem = ({name}) => {
+const FolderItem = ({name, onSelect, id}) => {
+  const handleSelected = () => {
+    onSelect(id, name);
+  }
   return (
-    <div className={cx('folder')}>
+    <div className={cx('folder')} onClick={handleSelected}>
       {name}
     </div>
   )
 };
 
 // db에 저장된 폴더들을 가져와서 뿌리는 역할을 해야한다.
-const Folders = ({folders}) => {
+const Folders = ({folders, onSelect}) => {
   const folderList = folders.map(
     (folder) => {
       const { _id, name } = folder;
@@ -25,6 +28,7 @@ const Folders = ({folders}) => {
           id={_id}
           key={_id}
           name={name}
+          onSelect={onSelect}
         />
       )
     }

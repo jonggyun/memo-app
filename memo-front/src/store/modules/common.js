@@ -3,21 +3,33 @@ import { Map } from 'immutable';
 
 // action type
 const FOLDER_MODAL = 'FOLDER_MODAL';
+const FOLDER_INFO = 'FOLDER_INFO';
 
 // action create function
 export const folderModal = createAction(FOLDER_MODAL);
-
+export const folderInfo = createAction(FOLDER_INFO);
 
 const initialSate = Map({
   folderModal: Map({
-    visible: false
+    visible: false,
+    type: '',
   }),
+  folderInfo: Map({
+    id: '',
+    folderName: ''
+  })
 });
 
 // reducer
 export default handleActions({
   FOLDER_MODAL: (state, action) => {
-    const visible = action.payload;
+    const { visible, type } = action.payload;
     return state.setIn(['folderModal', 'visible'], visible)
+                .setIn(['folderModal', 'type'], type)
+  },
+  FOLDER_INFO: (state, action) => {
+    const { id, folderName } = action.payload;
+    return state.setIn(['folderInfo', 'id'], id)
+                .setIn(['folderInfo', 'folderName'], folderName)
   }
 }, initialSate);
