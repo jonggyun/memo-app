@@ -18,8 +18,8 @@ class FolderModalContainer extends Component {
 
   handleChange = (e) => {
     const { value } = e.target;
-    const { CreateFolderAction } = this.props;
-    CreateFolderAction.dispatchFolderName(value);
+    const { FolderAction } = this.props;
+    FolderAction.dispatchFolderName(value);
   }
 
   removeFolder = async () => {
