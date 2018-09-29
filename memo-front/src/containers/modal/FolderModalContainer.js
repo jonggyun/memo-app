@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import CreateFolderModal from 'components/modal/CreateFolderModal';
+import FolderModal from 'components/modal/FolderModal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as commonActions from 'store/modules/common';
 import * as folderActions from 'store/modules/folder';
 
-class CreateFolderModalContainer extends Component {
+class FolderModalContainer extends Component {
 
   handleCancel = () => {
     const { CommonAction } = this.props;
-    CommonAction.createFolderModal(false);
+    CommonAction.folderModal(false);
   }
 
   handleChange = (e) => {
@@ -24,11 +24,9 @@ class CreateFolderModalContainer extends Component {
     const folder = {
       folderName: folderName
     }
-    console.log('history', history);
     try {
       await CreateFolderAction.createFolder(folder);
-      //CreateFolderAction.cFolder({folderName});
-      CommonAction.createFolderModal(false);
+      CommonAction.folderModal(false);
       history.push('/'); // 이거 왜 안되는거지?? router를 나눠야하나? 나중에 확인해보기
     } catch (e) {
       console.log(e);
@@ -39,7 +37,7 @@ class CreateFolderModalContainer extends Component {
     const { visible, folderName } = this.props;
     const { handleCancel, handleChange, createFolder } = this;
     return (
-      <CreateFolderModal 
+      <FolderModal 
         visible={visible}
         onCancel={handleCancel}
         folderName={folderName}
@@ -67,4 +65,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CreateFolderModalContainer);
+)(FolderModalContainer);

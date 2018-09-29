@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './CreateFolderModal.scss';
+import styles from './FolderModal.scss';
 import classNames from 'classnames/bind';
 import ModalWrapper from 'components/modal/ModalWrapper';
 
 const cx = classNames.bind(styles);
 
-const CreateFolderModal = ({ visible, onCancel, onChange, folderName, onCreateFolder }) => (
+const FolderModal = ({ visible, onCancel, onChange, folderName, onCreateFolder }) => (
   <ModalWrapper visible={visible}>
     <div className={cx('form')}>
       <div onClick={onCancel} className={cx('close')}>&times;</div>
@@ -17,4 +17,4 @@ const CreateFolderModal = ({ visible, onCancel, onChange, folderName, onCreateFo
   </ModalWrapper>
 );
 
-export default CreateFolderModal;
+export default FolderModal;

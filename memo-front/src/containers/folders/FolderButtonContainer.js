@@ -9,11 +9,12 @@ class FolderButtonContainer extends Component {
 
   onCreate = () => {
     const { CommonAction, visible } = this.props;
-    CommonAction.createFolderModal(true);
+    CommonAction.folderModal(true);
   }
 
   onRemove = () => {
-    alert('removeFolder');
+    const { CommonAction, visible } = this.props;
+    CommonAction.folderModal(true);    
   }
 
   onUpdate = () => {

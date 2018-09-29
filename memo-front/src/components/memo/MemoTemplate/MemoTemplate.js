@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import styles from './MemoTemplate.scss';
 import classNames from 'classnames/bind';
 
-//import CreateFolderModal from 'components/modal/CreateFolderModal';
-import CreateFolderModalContainer from 'containers/modal/CreateFolderModalContainer';
+import FolderModalContainer from 'containers/modal/FolderModalContainer';
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +19,7 @@ class MemoTemplate extends Component {
             {memoList}
           </div>         
         </div>
-        <CreateFolderModalContainer
+        <FolderModalContainer
           history={history}
         />
       </div>
