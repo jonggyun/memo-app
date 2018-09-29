@@ -18,10 +18,15 @@ class CreateFolderModalContainer extends Component {
     CreateFolderAction.dispatchFolderName(value);
   }
 
-  createFolder = () => {
+  createFolder = async () => {
     const { folderName, CreateFolderAction, CommonAction } = this.props;
     
-    CreateFolderAction.cFolder({folderName});
+    const folder = {
+      folderName: folderName
+    }
+
+    await CreateFolderAction.createFolder(folder);
+    //CreateFolderAction.cFolder({folderName});
     CommonAction.createFolderModal(false);
   }
 
