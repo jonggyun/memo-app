@@ -9,7 +9,7 @@ const cx = classNames.bind(styles);
 
 class MemoTemplate extends Component {
   render() {
-    const { folderList, memoList } = this.props;
+    const { folderList, memoList, history } = this.props;
     return (
       <div className={cx('memo-header')}>
         <div className={cx('panes')}>
@@ -20,7 +20,9 @@ class MemoTemplate extends Component {
             {memoList}
           </div>         
         </div>
-        <CreateFolderModalContainer />
+        <CreateFolderModalContainer
+          history={history}
+        />
       </div>
     );
   }

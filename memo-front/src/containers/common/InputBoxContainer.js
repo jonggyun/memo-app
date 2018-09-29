@@ -3,7 +3,7 @@ import InputBox from 'components/common/InputBox';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 
-import * as createFolder from 'store/modules/createFolder';
+import * as folder from 'store/modules/folder';
 
 class InputBoxContainer extends Component {
   onChangeName = ({folderName}) => {
@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setFolderName: bindActionCreators(createFolder.dispatchFolderName, dispatch)
+    setFolderName: bindActionCreators(folder.dispatchFolderName, dispatch)
   }
 };
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './InputBox.scss';
 import classNames from 'classnames/bind';
-import * as createFolder from 'store/modules/createFolder';
+import * as folder from 'store/modules/folder';
 
 const cx = classNames.bind(styles);
 

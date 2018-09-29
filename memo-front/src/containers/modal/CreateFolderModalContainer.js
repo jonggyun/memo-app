@@ -3,7 +3,7 @@ import CreateFolderModal from 'components/modal/CreateFolderModal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as commonActions from 'store/modules/common';
-import * as createFolderActions from 'store/modules/createFolder';
+import * as folderActions from 'store/modules/folder';
 
 class CreateFolderModalContainer extends Component {
 
@@ -19,15 +19,20 @@ class CreateFolderModalContainer extends Component {
   }
 
   createFolder = async () => {
-    const { folderName, CreateFolderAction, CommonAction } = this.props;
+    const { folderName, CreateFolderAction, CommonAction, history } = this.props;
     
     const folder = {
       folderName: folderName
     }
-
-    await CreateFolderAction.createFolder(folder);
-    //CreateFolderAction.cFolder({folderName});
-    CommonAction.createFolderModal(false);
+    console.log('history', history);
+    try {
+      await CreateFolderAction.createFolder(folder);
+      //CreateFolderAction.cFolder({folderName});
+      CommonAction.createFolderModal(false);
+      history.push('/'); // 이거 왜 안되는거지?? router를 나눠야하나? 나중에 확인해보기
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   render() {
@@ -50,13 +55,13 @@ const mapStateToProps = (state) => {
   const visible = state.common.getIn(['folderModal','visible']);
   return {
     visible: visible,
-    folderName: state.createFolder.folderName
+    folderName: state.folder.folderName
   }
 };
 
 const mapDispatchToProps = (dispatch) => ({
   CommonAction: bindActionCreators(commonActions, dispatch),
-  CreateFolderAction: bindActionCreators(createFolderActions, dispatch)
+  CreateFolderAction: bindActionCreators(folderActions, dispatch)
 });
 
 export default connect(
