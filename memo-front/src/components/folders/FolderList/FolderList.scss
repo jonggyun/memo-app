@@ -12,6 +12,11 @@
     height: 4.5rem;
   }
 
+  .folder-list {
+    height: calc(100vh - 11.6rem);
+    overflow: auto;
+  }
+
   .folder-footer {
     position: absolute;
     border: 1px solid black;

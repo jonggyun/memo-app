@@ -9,9 +9,6 @@ const GET_FOLDER_LIST = 'GET_FOLDER_LIST';
 // action create function
 // action type, payload
 export const getFolderList = createAction(GET_FOLDER_LIST);
-// export const getFolderList = {  
-//   type: GET_FOLDER_LIST
-// }
 
 export const getFList = () => {
   return (dispatch) => {
@@ -31,7 +28,6 @@ const initialState = {
 // 상태값, 액션
 export default handleActions({
   [GET_FOLDER_LIST]: (state, action) => {
-    console.log('getFolderList', action.payload);
     // return [
     //   ...state,
     //   ...action.payload

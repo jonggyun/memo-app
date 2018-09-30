@@ -1,6 +1,5 @@
 @import 'utils';
 
-
 .folder {
   height: 4rem;
   //border: 1px solid black;
@@ -13,4 +12,8 @@
     box-shadow: inset 10px 0 2px 0 $oc-lime-8;
   }
 }
+
+// .selected {
+//   box-shadow: inset 10px 0 2px 0 $oc-lime-8;
+// }
 

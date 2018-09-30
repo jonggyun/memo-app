@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as folderListAction from 'store/modules/folderList'; // 이곳는 리듀서가 정의되어 있다.
-import * as commonAction from 'store/modules/common';
+import * as folderAction from 'store/modules/folder';
 import Folders from 'components/folders/Folders';
 
 /**
@@ -11,12 +11,12 @@ import Folders from 'components/folders/Folders';
 class FoldersContainer extends Component {
 
   handleSelect = (id, folderName) => {
-    const { CommonAction } = this.props;
+    const { FolderAction } = this.props;
     const param = {
       id: id,
-      folderName: folderName
+      folderName: folderName,
     }
-    CommonAction.folderInfo(param);
+    FolderAction.folderInfo(param);
   }
 
   componentDidMount() {
@@ -34,7 +34,6 @@ class FoldersContainer extends Component {
     // 여기서 폴더 리스트를 받아와야함!!!
     const folders = this.props.folders;
     const { handleSelect } = this;
-    console.log('rendered folders', folders);
     if(folders === undefined) return null;
     return (
       <div>
@@ -50,14 +49,15 @@ class FoldersContainer extends Component {
 const mapStateToProps = (state) => {
   return ({
     folders : state.folderList.folders, // 컴포넌트의 props를 정의
-    complete: state.common.getIn(['folderModal', 'complete'])
+    complete: state.common.getIn(['folderModal', 'complete']),
+    id: state.folder.get('id')
   })
 };
 
 const mapDispatchToProps = (dispatch) => {
   return ({
     getFolderList: bindActionCreators(folderListAction.getFList, dispatch), // 컴포넌트의 props를 정의
-    CommonAction: bindActionCreators(commonAction, dispatch)
+    FolderAction: bindActionCreators(folderAction, dispatch),
   })
 };
 
