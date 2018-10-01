@@ -1,0 +1,17 @@
+@import 'utils';
+
+.memos {
+  width: 22rem;
+  height: 25rem;
+  border: 1px solid black;
+  margin: 3rem;
+  .memo-title {
+    height: 5rem;
+    border: 1px solid black;
+  }
+
+  .memo-content {
+    height: 20rem;
+    border: 1px solid black;
+  }
+}
