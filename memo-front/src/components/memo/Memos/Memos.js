@@ -7,7 +7,12 @@ const cx = classNames.bind(styles);
 const Memos = () => (
   <div className={cx('memos')}>
     <div className={cx('memo-title')}>
-      memo-title
+      <div className={cx('title')}>
+        memo-title
+      </div>
+      <div className={cx('date')}>
+        2018.01.01
+      </div>
     </div>
     <div className={cx('memo-content')}>
       memo-content
