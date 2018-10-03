@@ -7,9 +7,11 @@ import Memos from 'components/memo/Memos';
 const cx = classNames.bind(styles);
 
 const MemoList = () => (
-  <div className={cx('memo-list')}>
-    <Memos />
-    <Memos />
+  <div>
+    <div className={cx('memo-list')}>
+      <Memos />
+      <Memos />
+    </div>
   </div>
 );
 

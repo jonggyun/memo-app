@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Folders.scss';
 import classNames from 'classnames/bind';
+import Button from 'components/common/Button';
 
 const cx = classNames.bind(styles);
 
@@ -13,7 +14,12 @@ const FolderItem = ({name, onSelect, id}) => {
   }
   return (
     <div className={cx('folder')} onClick={handleSelected}>
-      {name}
+      <div className={cx('folder-name')}>
+        {name}
+      </div>
+      <div className={cx('memo-add-button')}>
+        <Button>+</Button>
+      </div>
     </div>
   )
 };
