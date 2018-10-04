@@ -1,0 +1,23 @@
+@import 'utils';
+
+.folder {
+  display: flex;
+  align-items: center;
+  .folder-name {
+    height: 5rem;
+    width: 75%;
+    //border: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    font-weight: 800;
+  }
+
+  .memo-add-button {
+    
+  }
+
+  &:hover {
+    box-shadow: inset 10px 0 2px 0 $oc-lime-8;
+  }
+}
