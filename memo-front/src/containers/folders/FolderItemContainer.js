@@ -8,7 +8,6 @@ class FolderItemContainer extends Component {
     // 메모 추가는 페이지를 별도로 구성하자
     const { id } = this.props;
     alert('add MemoButton')
-    console.log('##################', id);
   }
 
   render() {
