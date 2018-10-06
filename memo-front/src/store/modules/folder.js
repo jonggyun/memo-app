@@ -26,6 +26,7 @@ export const dispatchFolderName = (folderName) => {
 const initialState = Map({
   id: '',
   folderName: '',
+  selected: false
 });
 
 // reducer
@@ -39,8 +40,9 @@ export default handleActions({
     return state.set('folderName', folderName)
   },
   [FOLDER_INFO]: (state, action) => {
-    const {folderName, id} = action.payload;
+    const {folderName, id, selected} = action.payload;
     return state.set('folderName', folderName)
                 .set('id', id)
+                .set('selected', selected)
   },
 }, initialState);

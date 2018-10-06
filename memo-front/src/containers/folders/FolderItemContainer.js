@@ -3,16 +3,20 @@ import FolderItem from 'components/folders/FolderItem';
 import { connect } from 'react-redux';
 
 class FolderItemContainer extends Component {
-  
+
   onAddMemo = () => {
     // 메모 추가는 페이지를 별도로 구성하자
     const { id } = this.props;
-    alert('add MemoButton')
+  }
+
+  // 업데이트 조건 걸기
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props._id === nextProps.id;
   }
 
   render() {
-    const { _id, name, onSelect } = this.props;
-    const { onAddMemo } = this;
+    const { _id, name, onSelect, selected } = this.props;
+    const { onAddMemo } = this; 
     return (
       <div>
         <FolderItem
@@ -20,6 +24,7 @@ class FolderItemContainer extends Component {
           name={name}
           onSelect={onSelect}
           onAddMemo={onAddMemo}
+          selected={selected}
         />
       </div>
     );
@@ -28,6 +33,7 @@ class FolderItemContainer extends Component {
 
 const mapStateToProps = (state) => ({
   id: state.folder.get('id'),
+  selected: state.folder.get('selected'),
 });
 
 const mapDispatchToProps = (dispatch) => ({

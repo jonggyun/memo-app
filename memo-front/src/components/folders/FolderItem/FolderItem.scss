@@ -17,7 +17,11 @@
     
   }
 
-  &:hover {
-    box-shadow: inset 10px 0 2px 0 $oc-lime-8;
-  }
+  // &:hover {
+  //   box-shadow: inset 10px 0 2px 0 $oc-lime-8;
+  // }
+}
+
+.selected {
+  box-shadow: inset 10px 0 2px 0 $oc-lime-8;
 }

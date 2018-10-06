@@ -10,11 +10,15 @@ import Folders from 'components/folders/Folders';
  */
 class FoldersContainer extends Component {
 
-  handleSelect = (id, folderName) => {
-    const { FolderAction } = this.props;
+  handleSelect = (_id, folderName) => {
+    const { FolderAction, selected, id } = this.props;
+
+    // 현재 선택한 아이디와 이전에 선택한 아이디가 다를 경우 이전에 선택했던 아이디의 selected를 풀어줘야한다.
+
     const param = {
-      id: id,
+      id: _id,
       folderName: folderName,
+      selected: selected === true ? false : true,
     }
     FolderAction.folderInfo(param);
   }
@@ -50,7 +54,8 @@ const mapStateToProps = (state) => {
   return ({
     folders : state.folderList.folders, // 컴포넌트의 props를 정의
     complete: state.common.getIn(['folderModal', 'complete']),
-    id: state.folder.get('id')
+    id: state.folder.get('id'),
+    selected: state.folder.get('selected'),
   })
 };
 

@@ -8,13 +8,12 @@ const cx = classNames.bind(styles);
 /**
  * 폴더 하나 하나를 가르키는 컴포넌트
  */
-const FolderItem = ({name, onSelect, id, onAddMemo}) => {
+const FolderItem = ({name, onSelect, id, onAddMemo, selected}) => {
   const handleSelected = () => {
-    alert('select Folder', id);
-    onSelect(id, name);
+    onSelect(id, name, selected);
   }
   return (
-    <div className={cx('folder')} onClick={handleSelected}>
+    <div className={cx('folder', {selected: selected})} onClick={handleSelected}>
       <div className={cx('folder-name')}>
         {name}
       </div>
