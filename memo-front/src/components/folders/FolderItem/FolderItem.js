@@ -16,6 +16,7 @@ const FolderItem = ({name, onSelect, id, onAddMemo, selected}) => {
     onAddMemo(id);
   }
 
+  // 경로 설정
   const path = `folder/${id}/memo`;
 
   return (
@@ -23,10 +24,6 @@ const FolderItem = ({name, onSelect, id, onAddMemo, selected}) => {
       <div className={cx('folder-name')}>
         {name}
       </div>
-      {/* <div className={cx('memo-add-button')} onClick={(e)=>{ 
-        onAddMemo();
-        e.stopPropagation();
-      }}> */}
       <div className={cx('memo-add-button')}>
         <Button onCustomEvent={handleAddMemo} to={path}>+</Button>
       </div>
