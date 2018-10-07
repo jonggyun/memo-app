@@ -12,16 +12,23 @@ const FolderItem = ({name, onSelect, id, onAddMemo, selected}) => {
   const handleSelected = () => {
     onSelect(id, name, selected);
   }
+  const handleAddMemo = () => {
+    onAddMemo(id);
+  }
+
+  const path = `folder/${id}/memo`;
+
   return (
     <div className={cx('folder', {selected: selected})} onClick={handleSelected}>
       <div className={cx('folder-name')}>
         {name}
       </div>
-      <div className={cx('memo-add-button')} onClick={(e)=>{ 
+      {/* <div className={cx('memo-add-button')} onClick={(e)=>{ 
         onAddMemo();
         e.stopPropagation();
-      }}>
-        <Button>+</Button>
+      }}> */}
+      <div className={cx('memo-add-button')}>
+        <Button onCustomEvent={handleAddMemo} to={path}>+</Button>
       </div>
     </div>
   )

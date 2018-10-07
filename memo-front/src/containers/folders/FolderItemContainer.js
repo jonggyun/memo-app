@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 
 class FolderItemContainer extends Component {
 
-  onAddMemo = () => {
-    // 메모 추가는 페이지를 별도로 구성하자
-    const { id } = this.props;
+  onAddMemo = (id) => {
+    // 여기서 메모추가하는 화면으로 전환하기.
   }
 
   // 업데이트 조건 걸기

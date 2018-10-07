@@ -11,9 +11,7 @@ import Folders from 'components/folders/Folders';
 class FoldersContainer extends Component {
 
   handleSelect = (_id, folderName) => {
-    const { FolderAction, selected, id } = this.props;
-
-    // 현재 선택한 아이디와 이전에 선택한 아이디가 다를 경우 이전에 선택했던 아이디의 selected를 풀어줘야한다.
+    const { FolderAction, selected } = this.props;
 
     const param = {
       id: _id,
