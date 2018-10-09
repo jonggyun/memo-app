@@ -1,4 +1,5 @@
 const Folder = require('models/folders');
+// const Memo = require('models/memos');
 const Joi = require('joi');
 const { ObjectId } = require('mongoose').Types;
 
@@ -32,6 +33,7 @@ exports.fList = async (ctx) => {
  * POST /api/memos/
  */
 exports.fCreate = async (ctx) => {
+  console.log('create folder');
   // 전달 받은 값에 대한 검증!
   const schema = Joi.object().keys({
     folderName: Joi.string().required(),
@@ -68,6 +70,7 @@ exports.fCreate = async (ctx) => {
  * DELETE /api/memos/:fid
  */
 exports.fRemove = async (ctx) => {
+  console.log('remove folder')
   const { fid } = ctx.params;
   try {
     await Folder.findByIdAndRemove(fid).exec(); // findByIdAndDelete 와 차이는 뭘까?
@@ -82,6 +85,7 @@ exports.fRemove = async (ctx) => {
  * PATCH /api/memos/:fid
  */
 exports.fPatch = async (ctx) => {
+  console.log('update folder');
   const { fid } = ctx.params;
   try { // ctx.request.body에 있는 데이터로 바꿔주는듯!
     const folder = await Folder.findByIdAndUpdate(fid, ctx.request.body, {
@@ -103,7 +107,7 @@ exports.fPatch = async (ctx) => {
  * 메모 리스트 가져오기
  * GET /api/memos/:fid/memo
  */
-exports.mList = (ctx) => {
+exports.mList = async (ctx) => {
 
 };
 
@@ -111,7 +115,7 @@ exports.mList = (ctx) => {
  * 메모 생성하기
  * POST /api/memos/:fid/memo
  */
-exports.mWrite = (ctx) => {
+exports.mWrite = async (ctx) => {
 
 };
 
