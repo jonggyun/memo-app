@@ -28,8 +28,6 @@ class FoldersContainer extends Component {
     };
     // MemoAction.getMemoList(param);    
     MemoAction.memoList(param);
-
-    console.log('memoList', memoList);
   }
 
   componentDidMount() {

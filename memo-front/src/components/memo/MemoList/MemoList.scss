@@ -1,6 +1,6 @@
 @import 'utils';
 
 .memo-list {
-  display: flex;
-  align-content: center;  
+  display: inline-block;
+  overflow: auto;
 }

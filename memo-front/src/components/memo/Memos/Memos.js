@@ -4,18 +4,18 @@ import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
-const Memos = () => (
+const Memos = ({createDate, title, content}) => (
   <div className={cx('memos')}>
     <div className={cx('memo-title')}>
       <div className={cx('title')}>
-        memo-title
+        {title}
       </div>
       <div className={cx('date')}>
-        2018.01.01
+        {createDate.substring(0,10)}
       </div>
     </div>
     <div className={cx('memo-content')}>
-      memo-content
+      {content}
     </div>
   </div>
 );
