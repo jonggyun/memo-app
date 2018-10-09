@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as folderListAction from 'store/modules/folderList'; // 이곳는 리듀서가 정의되어 있다.
 import * as folderAction from 'store/modules/folder';
+import * as memoAction from 'store/modules/memo';
 import Folders from 'components/folders/Folders';
 
 /**
@@ -10,15 +11,25 @@ import Folders from 'components/folders/Folders';
  */
 class FoldersContainer extends Component {
 
-  handleSelect = (_id, folderName) => {
-    const { FolderAction, selected } = this.props;
+  handleSelect = async (_id, folderName) => {
+    const { FolderAction, selected, memoList } = this.props;
 
-    const param = {
+    let param = {
       id: _id,
       folderName: folderName,
       selected: selected === true ? false : true,
     }
     FolderAction.folderInfo(param);
+
+    const { MemoAction } = this.props;
+
+    param = {
+      id: _id
+    };
+    // MemoAction.getMemoList(param);    
+    MemoAction.memoList(param);
+
+    console.log('memoList', memoList);
   }
 
   componentDidMount() {
@@ -54,6 +65,7 @@ const mapStateToProps = (state) => {
     complete: state.common.getIn(['folderModal', 'complete']),
     id: state.folder.get('id'),
     selected: state.folder.get('selected'),
+    memoList: state.memo.memoList,
   })
 };
 
@@ -61,6 +73,7 @@ const mapDispatchToProps = (dispatch) => {
   return ({
     getFolderList: bindActionCreators(folderListAction.getFList, dispatch), // 컴포넌트의 props를 정의
     FolderAction: bindActionCreators(folderAction, dispatch),
+    MemoAction: bindActionCreators(memoAction, dispatch),
   })
 };
 

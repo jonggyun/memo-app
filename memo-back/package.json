@@ -12,6 +12,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "mongoose": "^5.2.16",
+    "mongoose-auto-increment": "^5.0.1",
     "query-string": "5",
     "redux-actions": "^2.6.1"
   },

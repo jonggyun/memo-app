@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const Memo = new Schema({
   title: { type: String, required: true },
   content: { type: String },
-  createDate: { type: Date, default: new Date() }
+  createdate: { type: Date, default: new Date() }
 });
 
 const Folder = new Schema({

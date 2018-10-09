@@ -3,3 +3,4 @@
 export { default as folderList } from './folderList';
 export { default as folder } from './folder'; 
 export { default as common } from './common';
+export { default as memo } from './memo';

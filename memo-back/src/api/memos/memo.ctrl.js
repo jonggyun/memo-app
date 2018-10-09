@@ -17,7 +17,7 @@ exports.checkObjectId = (ctx, next) => {
  * 폴더 리스트 가져오기
  * GET /api/memos/
  */
-exports.fList = async (ctx) => {
+exports.getFolderList = async (ctx) => {
   try {
     // find() 함수를 호출! exec()를 붙여야 서버에서 쿼리를 요청!
     // sort() 함수를 통한 정렬
@@ -32,17 +32,14 @@ exports.fList = async (ctx) => {
  * 폴더 생성하기
  * POST /api/memos/
  */
-exports.fCreate = async (ctx) => {
+exports.addFolder = async (ctx) => {
   console.log('create folder');
   // 전달 받은 값에 대한 검증!
   const schema = Joi.object().keys({
     folderName: Joi.string().required(),
   });
 
-  console.log('ctx.request.body', ctx.request.body);
-
   const result = Joi.validate(ctx.request.body, schema);
-
   if (result.error) {
     ctx.status = 400; // bad request
     ctx.body = result.error;
@@ -69,7 +66,7 @@ exports.fCreate = async (ctx) => {
  * 폴더 삭제하기
  * DELETE /api/memos/:fid
  */
-exports.fRemove = async (ctx) => {
+exports.removeFolder = async (ctx) => {
   console.log('remove folder')
   const { fid } = ctx.params;
   try {
@@ -84,7 +81,7 @@ exports.fRemove = async (ctx) => {
  * 폴더 변경하기
  * PATCH /api/memos/:fid
  */
-exports.fPatch = async (ctx) => {
+exports.updateFolder = async (ctx) => {
   console.log('update folder');
   const { fid } = ctx.params;
   try { // ctx.request.body에 있는 데이터로 바꿔주는듯!
@@ -107,31 +104,74 @@ exports.fPatch = async (ctx) => {
  * 메모 리스트 가져오기
  * GET /api/memos/:fid/memo
  */
-exports.mList = async (ctx) => {
-
+exports.getMemoList = async (ctx) => {
+  // 폴더안에 존재하는 메모리스트 가져오기
+  console.log('get MemoList');
+  try {
+    // Id 값으로 찾아오기.
+    const { fid } = ctx.params;
+    const memoList = await Folder.findById(fid).exec();
+    console.log('memoList',memoList);
+    ctx.body = memoList;
+  } catch (e) {
+    ctx.throws(e, 500); // Internal Server Error
+  }  
 };
 
 /**
  * 메모 생성하기
  * POST /api/memos/:fid/memo
  */
-exports.mWrite = async (ctx) => {
+exports.addMemo = async (ctx) => {
+  // 현존하는 폴더에 memo 스키마를 배열로 추가
+  try {
+    const { fid } = ctx.params;
+    const memoList = await Folder.findByIdAndUpdate(fid,{
+      $push: { title: "", content: ""}
+    }, {
+      new: true
+    }).exec();
 
+    if(!memoList) {
+      ctx.status = 404;
+      return
+    };
+    ctx.body = memoList;
+  } catch (e) {
+    ctx.throws(e, 500);
+  }
 };
 
 /**
  * 메모 삭제하기
  * DELETE /api/memos/:fid/memo/:mid
  */
-exports.mRemove = (ctx) => {
+exports.removeMemo = async (ctx) => {
+  // 현존하는 폴더에서 memo 스키마에서 내용을 삭제
+  try {
+    const { fid } = ctx.params;
+    const memoList = await Folder.findByIdAndUpdate(fid,{
+      // title을 바탕으로 삭제
+      $pull: { title: "" }
+    }, {
+      new: true
+    }).exec();
 
+    if(!memoList) {
+      ctx.status = 404;
+      return
+    };
+    ctx.body = memoList;    
+  } catch (e) {
+    ctx.throws(e, 500);
+  }
 };
 
 /**
  * 메모 변경하기
  * PATCH /api/memos/:fid/memo/:mid
  */
-exports.mPatch = (ctx) => {
+exports.updateMemo = (ctx) => {
 
 };
 
@@ -139,6 +179,6 @@ exports.mPatch = (ctx) => {
  * 메모 내용 가져오기
  * GET /api/memos/:fid/memo/:mid
  */
-exports.mContent = (ctx) => {
+exports.getMemo = (ctx) => {
 
 };
