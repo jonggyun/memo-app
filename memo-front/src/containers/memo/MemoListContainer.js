@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
 import MemoList from 'components/memo/MemoList';
+import MemoHeader from 'components/memo/MemoHeader';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 class MemoListContainer extends Component {
   render() {
-    const { memoList } = this.props;
+    const { memos } = this.props;
+    console.log('memos: ', memos);
+    if(memos === null) return null;
+
     return (
       <div>
-        <MemoList 
-          memoList={memoList}
-        />
-      </div>
-    );
+        <MemoHeader title={memos.name} />
+        <MemoList memoList={memos.memolist} />  
+       </div>
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
-  memoList: state.memo.memoList
+  memos: state.memo.memoList
 });
 
-const mapDispatchToProps = (state) => {
+// const mapDispatchToProps = (state) => {
 
-};
+// };
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(MemoListContainer);

@@ -3,4 +3,5 @@
 .memo-list {
   display: inline-block;
   overflow: auto;
+  height: calc(100vh - 8rem);
 }

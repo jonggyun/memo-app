@@ -112,7 +112,7 @@ exports.getMemoList = async (ctx) => {
     const { fid } = ctx.params;
     const memoList = await Folder.findById(fid).exec();
     console.log('memoList',memoList);
-    ctx.body = memoList.memolist;
+    ctx.body = memoList;
   } catch (e) {
     ctx.throws(e, 500); // Internal Server Error
   }  

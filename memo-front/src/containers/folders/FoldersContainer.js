@@ -12,7 +12,7 @@ import Folders from 'components/folders/Folders';
 class FoldersContainer extends Component {
 
   handleSelect = async (_id, folderName) => {
-    const { FolderAction, selected, memoList } = this.props;
+    const { FolderAction, selected } = this.props;
 
     let param = {
       id: _id,
@@ -26,7 +26,6 @@ class FoldersContainer extends Component {
     param = {
       id: _id
     };
-    // MemoAction.getMemoList(param);    
     MemoAction.memoList(param);
   }
 

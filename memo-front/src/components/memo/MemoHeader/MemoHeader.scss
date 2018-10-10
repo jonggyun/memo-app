@@ -1,0 +1,12 @@
+@import 'utils';
+
+.memo-header {
+  height: 5.5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  background: $oc-lime-8;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
