@@ -1,2 +1,3 @@
 *.env
-
+memo-back/node_modules
+memo-front/node_modules
