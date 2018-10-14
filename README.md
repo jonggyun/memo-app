@@ -5,9 +5,13 @@
 
 > 간단한 메모를 기록할 수 있는 메모 웹애플리케이션
 
+  첫 번째 리액트 프로젝트, 기본 개념 익히기 정도로만 개발
+  
+  폴더 추가, 삭제, 메모 보기까지만 개발
+
 ## Project Duration
 
-> 2018.09.19 ~ current
+> 2018.09.19 ~ 2018.10.10
 
 ## Project Specification
 
@@ -30,33 +34,45 @@
 ### Front-End
 ```
 ├── Root.js
-├── components                          - 프레젠테이셔널 컴포넌트
-│   ├── App.js                          - 컴포넌트의 전체 라우트 관리
-│   ├── common                          - 공통 컴포넌트(ex. button, header ..)
+├── components                          - 프레젠테이션 컴포넌트 모음
+│   ├── App.js
+│   ├── common
+│   │   ├── Button
+│   │   └── Header
 │   ├── folders
-│   │   └── Folders                     - 화면 좌측 폴더 컴포넌트
-│   └── memo
-│       ├── MemoContent                 - 메모페이지 내용 컴포넌트
-│       ├── MemoFolder                  - 메모페이지 폴더 컴포넌트
-│       ├── MemoHeader                  - 메모페이지 헤더 컴포넌트
-│       ├── MemoList                    - 메모페이지 메모리스트 컴포넌트
-│       └── MemoTemplate                - 메모페이지 (템플릿)프레임 컴포넌트
-├── containers                          - 컨테이너 컴포넌트
+│   │   ├── FolderButton
+│   │   ├── FolderItem
+│   │   ├── FolderList
+│   │   └── Folders
+│   ├── memo
+│   │   ├── MemoHeader
+│   │   ├── MemoList
+│   │   ├── MemoPostPane
+│   │   ├── MemoPostTemplate
+│   │   ├── MemoTemplate
+│   │   └── Memos
+│   └── modal
+│       ├── FolderModal
+│       └── ModalWrapper
+├── containers                           - 컨테니어 컴포넌트 모음
+│   ├── common
+│   ├── folders
+│   ├── memo
+│   └── modal
 ├── index.css
 ├── index.js
 ├── lib
-│   └── api.js                          - axios 비동기 연결
+│   └── api.js                            - axios 비동기 연결
 ├── pages
 │   ├── MemoPage.js
+│   ├── MemoPost.js
 │   └── index.js
+├── registerServiceWorker.js
 ├── store
 │   ├── configure.js
-│   └── modules                         - Ducks 구조의 Redux
-│       └── index.js
-└── styles                              - 공통 CSS
-
+│   └── modules                           - Ducks 구조로 Redux 표현
+└── styles                                - 공통 CSS
 ```
-
 
 ### Back-End
 ```
@@ -70,3 +86,4 @@
     ├── folders.js       
     └── memos.js
 ```
+
